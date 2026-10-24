@@ -39,7 +39,8 @@ Mac generatemac(){
 }
 
 int main(int argc, char *argv[]){
-	srand((unsigned int)getpid()); //random seeding with current process id from <unistd.h> lib typecast to make sure of type match
+	Mac mac = generatemac();
+	srandom((unsigned int)getpid()); //random seeding with current process id from <unistd.h> lib typecast to make sure of type match
 	char cmd[100];
     snprintf(cmd, sizeof(cmd), "sudo ip link set dev eth0 address %02X:%02X:%02X:%02X:%02X:%02X",
              (unsigned char)(mac.addr >> 40), (unsigned char)(mac.addr >> 32),
@@ -52,5 +53,4 @@ int main(int argc, char *argv[]){
 	
 	return 0;
 }
-
 
